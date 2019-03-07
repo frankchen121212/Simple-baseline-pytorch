@@ -6,8 +6,8 @@ State-of-the-art results are achieved on challenging benchmarks. On posetrack ke
 
 ## Pose-Track2018 Tracking demo
 <div align="center">
-    <img src="example/video_001007.gif", width="400">
-    <img src="example/video_002277.gif", width="400">
+    <img src="Simpe-baseline/example/video_001007.gif", width="400">
+    <img src="Simpe-baseline/example/video_002277.gif", width="400">
 </div>
 ## Main Results
 ### Results on Posetrack val
