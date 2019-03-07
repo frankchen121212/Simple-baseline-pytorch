@@ -1,0 +1,15 @@
+生成光流文件：
+
+###（flownet环境） CUDA_VISIBLE_DEVICES=6 python main.py --inference --model FlowNet2S --save_flow --inference_dataset ImagesFromFolder --inference_dataset_root /share1/home/chunyang/files/Dataset/posetrack/Flowimgs/imgs/val/ --resume work/FlowNet2-S_checkpoint.pth.tar 
+
+（flownet环境,files/fl/flownet2-pytorch文件夹下,记得检查dataset.py 321行 iext是否为'jpg'）python posetrack2flow.py
+
+用 Deform FPN 检测 posetrack 数据集
+(det环境） CUDA_VISIBLE_DEVICES=3 python fpn/test.py --cfg experiments/fpn/cfgs/finetune.yaml --ignore_cache (最好用单块GPU，不容易出问题,如果报错list out of range, 则删除cache文件夹里的文件）
+
+用simple baseline 生成验证集结果：
+
+(pytorch)  CUDA_VISIBLE_DEVICES=0 python pose_estimation/valid_with_opticalflow.py --cfg experiments/posetrack/resnet50/valid_with_opticalflow.yaml --flip-test --model-file models/pytorch/pose_posetrack/finetune_flip.tar 
+
+
+
