@@ -5,14 +5,7 @@ This is a recurrent pytorch implementation of [*Simple Baselines for Human Pose 
 State-of-the-art results are achieved on challenging benchmarks. On posetrack keypoints valid dataset, our best **single model** achieves **73.5 of mAP**and**61.1 of MOTA**. You can reproduce our results using this repo.    </br>
 
 ## Pose-Track2018 Tracking demo
-<div align="center">
-    <img src="example/video_001007.gif", width="400">
-    <img src="example/video_003943.gif", width="400">
-</div>
-<div align="center">
-    <img src="example/video_002277.gif", width="400">
-    <img src="example/video_005066.gif", width="400">
-</div>
+
 
 ## Main Results
 ### Results on Posetrack val
