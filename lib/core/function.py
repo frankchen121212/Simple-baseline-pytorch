@@ -16,6 +16,7 @@ import tqdm
 import scipy.optimize
 import scipy.spatial
 import cv2
+from PIL import Image
 import numpy as np
 import torch
 import torchvision.transforms as transforms
@@ -993,12 +994,19 @@ def save_image_with_skeleton(data_numpy,im_id,instance,output_dir,frames,next_id
 
         cv2.putText(data_numpy, 'id_{}'.format(track_id), head_top, cv2.FONT_HERSHEY_COMPLEX, 0.6, [0, 255, 255])
     cv2.imwrite(os.path.join(output_dir,'videos',video_name, file_name), data_numpy)
+    before_resized = Image.open(os.path.join(output_dir,'videos',video_name, file_name))
+    (x,y)=before_resized.size
+    new_x = 400
+    ratio = y/x
+    new_y = new_x * ratio
+    resized = before_resized.resize((int(new_x),int(new_y)))
+    resized.save(os.path.join(output_dir, 'videos', video_name, file_name))
 
     if next_id in ids :
         frames.append(imageio.imread(os.path.join(output_dir,'videos',video_name, file_name)))
         return frames
     else:
-        gif_name = 'video_{}'.format(video_name)
+        gif_name = 'video_{}.gif'.format(video_name)
         logger.info('saving video-->{}.gif'.format(video_name))
         imageio.mimsave(os.path.join(output_dir,'videos',video_name,gif_name),frames,'GIF',duration=0.05)
         return []
