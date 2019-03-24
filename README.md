@@ -146,4 +146,13 @@ CUDA_VISIBLE_DEVICES=0 python pose_estimation/valid_with_opticalfolw.py \
     --flip-test \
     --model-file    models/pytorch/pose_posetrack/finetune_final_10loss_.tar
 ```
-
+### Citation
+Our work is based on the research of:
+```
+@inproceedings{xiao2018simple,
+    author={Xiao, Bin and Wu, Haiping and Wei, Yichen},
+    title={Simple Baselines for Human Pose Estimation and Tracking},
+    booktitle = {European Conference on Computer Vision (ECCV)},
+    year = {2018}
+}
+```
