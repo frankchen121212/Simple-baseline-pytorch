@@ -798,7 +798,6 @@ def get_visible_joints(preds,maxvals,invisible_thre):
         if maxvals[0][i_sc_j][:] < invisible_thre:
             preds_set_invisible[0][i_sc_j][0] = 0
             preds_set_invisible[0][i_sc_j][1] = 0
-            maxvals_set_invisible[0][i_sc_j][:] = 0
             num_invisible_joints += 1
     if num_invisible_joints == maxvals.shape[1]:
         the_best_joint_score = np.max(maxvals, axis=1)
@@ -806,7 +805,6 @@ def get_visible_joints(preds,maxvals,invisible_thre):
             if maxvals_set_invisible[0][i_sc_j][:] == the_best_joint_score:
                 preds_set_invisible[0][i_sc_j][0] = preds[0][i_sc_j][0]
                 preds_set_invisible[0][i_sc_j][1] = preds[0][i_sc_j][1]
-                maxvals_set_invisible[0][i_sc_j][:] = the_best_joint_score
     return preds_set_invisible ,maxvals_set_invisible
 
 def generate_target(config,joints, joints_vis):
@@ -986,8 +984,13 @@ def save_image_with_skeleton(data_numpy,im_id,instance,output_dir,frames,next_id
         if left_hip != (0, 0) and left_shoulder != (0, 0):
             cv2.line(data_numpy, left_hip, left_shoulder, [255, 0, 0], 3)
             #shoulder
-        if left_shoulder != (0, 0) and right_shoulder != (0, 0):
-            cv2.line(data_numpy, left_shoulder, right_shoulder, [255, 0, 0], 3)
+        if left_shoulder != (0, 0) and head_bottom != (0, 0):
+            cv2.line(data_numpy, left_shoulder, head_bottom, [255, 0, 0], 3)
+        if right_shoulder != (0, 0) and head_bottom != (0, 0):
+            cv2.line(data_numpy, right_shoulder, head_bottom, [255, 0, 0], 3)
+            #bottom
+        if left_hip != (0, 0) and right_hip != (0, 0):
+            cv2.line(data_numpy, left_hip, right_hip, [255, 0, 0], 3)
             #head
         if head_bottom != (0, 0) and head_top != (0, 0):
             cv2.line(data_numpy, head_bottom, head_top, [0, 0, 255], 3)
