@@ -1,7 +1,7 @@
 # Simple Baselines for Human Pose Estimation and Tracking
 
 ## Introduction
-This is a recurrent pytorch implementation of [*Simple Baselines for Human Pose Estimation and Tracking*](https://arxiv.org/abs/1804.06208). 
+This is a reproduction work with pytorch implementation of [*Simple Baselines for Human Pose Estimation and Tracking*](https://arxiv.org/abs/1804.06208). 
 State-of-the-art results are achieved on challenging benchmarks. On posetrack keypoints valid dataset, our best **single model** achieves **73.5 of mAP**and**61.1 of MOTA**. You can reproduce our results using this repo.    </br>
 
 ## Pose-Track2018 Tracking demo
